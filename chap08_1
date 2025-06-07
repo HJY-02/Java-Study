@@ -1,0 +1,48 @@
+class ParenCat{
+	public String breed="샴고양이";
+	void eat() {
+		System.out.println("먹이를 먹다");
+	}
+}
+class BabyCat extends ParenCat{
+	public String color="초콜릿색";
+	void meow() {
+		System.out.println("야옹하고 울다.");
+	}
+}
+public class chap08_1 {
+	public static void main(String[] args) {
+		BabyCat catobj=new BabyCat();
+		System.out.println("품종: "+catobj.breed);
+		System.out.println("품종: "+catobj.color);
+		
+		catobj.eat();
+		catobj.meow();
+	}
+}
+//--------------------------------------------------
+class Calculation {
+	int z;
+
+     public void addition(int x, int y) {
+        z = x + y;
+       System.out.println("두 수의 덧셈 : " + z);
+     }
+      public void subtraction(int x, int y) {
+         z = x - y;
+         System.out.println("두 수의 뺄셈 : " + z);
+     }
+}
+public class chap08_1 extends Calculation {
+     public void multiplication(int x, int y) {
+        z = x * y;
+       System.out.println("두 수의 곱셈 : " + z);
+     }
+      public static void main(String[] args) {
+        int a = 20, b = 10;
+        chap08 obj = new chap08();
+        obj.addition(a, b);
+        obj.subtraction(a, b);
+        obj.multiplication(a, b);
+    }
+}
