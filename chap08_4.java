@@ -70,3 +70,8 @@ class SubKitten extends SuperCat{
 		System.out.println("아기고양이입니다. 이름은 "+name);
 	}
 }
+public class chap08_4 {
+	public static void main(String[] args) {
+		SubKitten objCat=new SubKitten("아름이","다운이");
+	}
+}
