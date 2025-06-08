@@ -1,83 +1,48 @@
-## 📕패키지 개념
+■**예외와 예외 처리**
 
-- 관련 클래스의 모음을 패키지(package)라고 함
-- 관련된 클래스, 인터페이스, 하위 패키지를 하나로 묶음
+- 예외
+    - 프로그램의 정상적인 흐름을 방해하는 원치 않는 이벤트
+    - 비정상적인 상태인 예외가 발생하면 프로그램의 실행이 종료되고 시스템 생성 오류 메시지가 나타냄
 
-![image.png](attachment:e9304664-202a-47c2-ba5c-b952250b9bed:image.png)
+```java
+public class chap11 {
+	public static void main(String[] args) {
+		int a=0;
+		int b=5/a;
+	}
+}
+```
 
-- 패키지: 각각 특정 기능을 가진 클래스의 묶음
-- 유사한 클래스와 기능을 캡슐화한 것
-- 패키지에는 인터페이스와 하위 패키지가 포함될 수 있음
+```java
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+	at chap11.main(chap11.java:4)
+	  클래스명 메서드명 파일명   행번호
+```
 
-## 👍패키지 사용의 장점
+## 👣예외의 유형
 
-- 재사용성
-    - 패키지를 통해 데이터 캡슐화를 쉽게 구현할 수 있으므로 프로젝트를 개발하는 동안 코드를 반복하여 작성하는 일이 거의 없음
-- 더 나은 조직화
-    - 기능에 따라 클래스를 정렬하기 때문에 클래스를 검색하기가 쉬움
-- 이름 충돌 방지
-    - 패키지는 이름의 충돌을 방지하는 데 도움이 됨
-- 접근 제어
-    - 접근제한자와 패키지를 함께 사용하여 클래스의 접근 가능성을 제어할 수 있음
+- 컴파일 예외
+    - 컴파일러가 컴파일 시간에 확인하는 검사형 예외(checked exception)
+    - 메서드 내부에 확인된 예외가 있는 경우 메서드는 예외를 처리하거나 throw 키워드를 사용하여 예외를 처리할 수 있음
+    - 주요 컴파일 예외 클래스
+        - IOException
+        - ClassNotFoundException
+        - SQLException
+        - InterruptedException
+- 런타임 예외
+    - 런타임에 발생하는 비검사형 예외(unchecked exception)
+    - 예외를 처리할 지 말지가 전적으로 프로그래머에게 달려 있음
+    - 주요 런타임 예외 클래스
+        - ArithmeticException
+        - NumberFormatException
+        - ArrayIndexOutOfBoundsException
+- Exception클래스의 주요 메서드
+    - getMessage()
+    - toString()
+    - printStackTrace()
+    - getCause()
 
-## 👣패키지 유형
+## ✍️**예외 처리를 위한 키워드**
 
-- 사용자 정의 패키지
-    - 사용자가 프로젝트의 클래스와 인터페이스를 분류하기 위해 생성하는 패키지
-- 내장 패키지
-    - java.io.*, java.lang.* 등과 같이 이미 정의된 패키지
-
-## ⚒️패키지 생성
-
-- 패키지 선언
-    - package 명령어 뒤에 패키지 경로명을 작성하고, 프로그램(자바 소스 파일)의 첫 행에 포함해야 함
-    - package 패키지명;
-- 패키지명의 구성
-    - 패키지명은 마침표(.)로 구분된 여러 단어의 조합으로, 각 단어는 파일 시스템의 한 폴더 또는 디렉터리를 나타냄
-    - ex) com.javamaster.mypackage;
-- 패키지명 작성 규칙
-    - 숫자로 시작할 수 없음
-    - ‘_’과 ‘$’를 제외한 특수 문자를 사용할 수 없음.
-    - java로 시작하는 패키지를 사용할 수 없습니다. java로 시작하는 패키지는 자바 표준 API에서만 사용 가능함
-    - int, static 등 자바 예약어를 사용할 수 없음
-    - 클래스명 또는 인터페이스명과의 충돌 방지를 위해 모두 소문자로 작성하는 것이 관례임
-    - 소스 파일을 각각의 그룹으로 구분하기 위해 마침표(.)를 사용함
-
-■**패키지 사용법**
-
-- 패키지 내부의 클래스에 접근하려면 import 명령어 뒤에 패키지명과 클래스명을 지정함
-    - 컴파일 시 컴파일러가 import문을 통해 소스 파일에 사용된 클래스의 패키지를 알아내고 모든 클래스명 앞에 패키지명을 붙임
-- **패키지명.클래스명’ 형식** : 이 패키지 내에 선언된 클래스에만 접근할 수 있음
-- **패키지명.*’ 형식** : 이 패키지 내의 모든 클래스와 인터페이스에 접근할 수 있으나 하위 패키지에는 접근할 수 없음
-- **‘정규화된 이름’ 형식** : import 명령어를 사용할 필요 없이 이 패키지에 선언된 클래스에만 접근할 수 있음
-
-## ✅java.lang패키지
-
-- 자바의 가장 기본적인 클래스와 인터페이스가 담겨 있는 패키지
-- import문 없이 사용할 수 있음
-    - Object
-    - System
-    - Class
-    - String
-    - StringBuffer, StringBuilder
-    - Math
-    - Wrapper
-
-## ✅java.lang패키지
-
-- 유틸리티 성격의 클래스와 인터페이스를 모아놓은 패키지로 Date, Calendar 등의 날짜 관련 클래스가 포함되어 있음
-- List, Set, Collection, Map 등과 같은 다양한 자료 구조를 모아놓은 컬렉션 프레임워크(collection framework)도 담겨 있음
-    - Date
-    - Calender
-    - StringTokenizer
-    - Random
-    - Arrays
-
-## ✅java.text패키지
-
-- 텍스트, 날짜, 숫자, 메시지를 일정한 형식에 맞게 처리하기 위한 클래스와 인터페이스를 모아놓은 패키지
-- 현지화가 필요한 데이터의 효율적 처리를 위한 패키지로, 지역에 민감한 데이터를 현장에 맞게 문자열로 표현하고 포맷할 수 있도록 지원하는 Format 클래스가 포함되어 있음
-    - DateFormat
-    - SimpleDateFormat
-    - DecimalFormat
-    - MessageFormat
+- 자바에서 예외를 처리하는 데 사용하는 키워드
+    - try, catch, finally, throw, throws
